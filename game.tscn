@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://cqvmpkbos55xh"]
+[gd_scene load_steps=7 format=4 uid="uid://cqvmpkbos55xh"]
 
 [ext_resource type="TileSet" uid="uid://th0bmb1bm1t0" path="res://tile_set.tres" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://b4p0si1dbreip" path="res://player.gd" id="2_e2o6t"]
 [ext_resource type="Script" uid="uid://c7lhpj8c0uyhm" path="res://grid.gd" id="2_feb5d"]
+[ext_resource type="Script" uid="uid://cwd3m86sbx142" path="res://tile_highlight.gd" id="3_fc0e3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_80nbo"]
 radius = 4.0
@@ -28,11 +29,20 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAD9/wEAAQAAAAYAAAD8/wEAAQAAAAYAAAD9/wAAAQAAAAYAAAA=")
 tile_set = ExtResource("1_80nbo")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("tilemap_layer", "grid")]
+[node name="Highlight" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9/wEAAQAAAAYAAAD8/wEAAQAAAAYAAAD9/wAAAQAAAAYAAAA=")
+tile_set = ExtResource("1_80nbo")
+script = ExtResource("3_fc0e3")
+tile_atlas_coord = Vector2i(10, 5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("tilemap_layer", "grid", "tile_highlight")]
 position = Vector2(-44, -77)
 script = ExtResource("2_e2o6t")
 tilemap_layer = NodePath("../TileMapLayer")
 grid = NodePath("../TileMapLayer")
+tile_highlight = NodePath("../Highlight")
 move_speed = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
