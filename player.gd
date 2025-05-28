@@ -28,13 +28,10 @@ var path_idx: float = 0
 
 var tween: Tween
 
-func map_to_global(map: Vector2i) -> Vector2:
-	return tilemap_layer.to_global(tilemap_layer.map_to_local(map))
-
 func _ready() -> void:
 	var pos_local := tilemap_layer.to_local(global_position)
 	cur_tile = tilemap_layer.local_to_map(pos_local)
-	global_position = map_to_global(cur_tile)
+	global_position = grid.map_to_global(cur_tile)
 
 func _process(delta: float) -> void:
 	var mouse_pos_global := get_global_mouse_position()
@@ -66,7 +63,7 @@ func process_path(delta: float):
 		return
 		
 	var start_cell := path[idx]
-	var start_point := map_to_global(start_cell)
+	var start_point := grid.map_to_global(start_cell)
 	if idx + 1 >= len(path):
 		global_position = start_point
 		cur_tile = start_cell
@@ -74,7 +71,7 @@ func process_path(delta: float):
 		return
 		
 	var end_cell := path[idx + 1]
-	var end_point := map_to_global(end_cell)
+	var end_point := grid.map_to_global(end_cell)
 	cur_tile = end_cell
 	var t := fmod(path_idx, 1.0)
 	global_position = lerp(start_point, end_point, t)

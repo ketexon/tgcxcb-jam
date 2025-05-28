@@ -1,6 +1,25 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://th0bmb1bm1t0"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://th0bmb1bm1t0"]
 
 [ext_resource type="Texture2D" uid="uid://dt3scmh8k3je7" path="res://tilesheet_complete.png" id="1_kfwk1"]
+[ext_resource type="Texture2D" uid="uid://but0iwvmr25yl" path="res://isometricgrid.png" id="1_nq4aq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1vrtm"]
+texture = ExtResource("1_nq4aq")
+texture_region_size = Vector2i(62, 93)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 31)
+0:1/0 = 0
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 31)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 31)
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+0:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nq4aq"]
 texture = ExtResource("1_kfwk1")
@@ -383,10 +402,20 @@ texture_region_size = Vector2i(111, 128)
 10:5/0 = 0
 10:5/0/texture_origin = Vector2i(0, -31)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ppxi"]
+texture = ExtResource("1_nq4aq")
+margins = Vector2i(0, 31)
+texture_region_size = Vector2i(62, 62)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, -15)
+0:1/0/custom_data_0 = true
+
 [resource]
 tile_shape = 1
 tile_layout = 5
-tile_size = Vector2i(111, 64)
+tile_size = Vector2i(62, 31)
 custom_data_layer_0/name = "walkable"
 custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_nq4aq")
+sources/0 = SubResource("TileSetAtlasSource_1vrtm")
+sources/2 = SubResource("TileSetAtlasSource_3ppxi")
